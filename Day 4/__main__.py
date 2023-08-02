@@ -15,10 +15,9 @@
 # 6. Finalmente, la opción 6 simplemente va a finalizar la ejecución del código.
 # """
 
+from __func__ import elegir_opcion
 import pandas as pd
 from pandas import ExcelWriter
-from pathlib import Path
-import keyboard
 
 
 # df = pd.DataFrame({'Id': [1, 3, 2, 4],
@@ -32,19 +31,22 @@ import keyboard
 # excel_generator._save()
 
 
-def menu():
-    pointer: int = 0
-    ops = 4
-    a = 0
-    while True:
-        if not a == 1:
-            print(f"""
-            [{"<>" if pointer == 0 else " "}] Revisar Receta
-            [{"<>" if pointer == 1 else " "}] Crear Receta
-            [{"<>" if pointer == 2 else " "}] 
-            [{"<>" if pointer == 3 else " "}]
-            """)
-            a = 1
+def menu() -> 0:
+    salida: bool = False
+    op: int = 0
+    opciones_menu: tuple[str] = (
+        "Revisar Receta",
+        "Crear Receta",
+        "Listar Recetas",
+        "Salir",
+    )
+    while not salida:
+        op = elegir_opcion(opciones_menu)
+
+        match op:
+            case "Revisar Receta":
+                salida = True
+                break
 
 
 pass
